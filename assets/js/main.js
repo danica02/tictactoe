@@ -6,6 +6,8 @@ const friendBtn = document.querySelector(".container");
 const xBtn = document.querySelector(".x");
 const oBtn = document.querySelector(".o");
 const playBtn = document.querySelector(".play");
+const playAgn = document.getElementById("playAgnBTN")
+
 
 // GAME OVER ELEMENT
 const gameOverElement = document.querySelector(".gameover");
@@ -15,7 +17,6 @@ let OPPONENT;
 
 oBtn.addEventListener("click", function(){
     player.man = "O";
-    player.computer = "X";
     player.friend = "X";
 
     switchActive(xBtn, oBtn);
@@ -23,7 +24,6 @@ oBtn.addEventListener("click", function(){
 
 xBtn.addEventListener("click", function(){
     player.man = "X";
-    player.computer = "O";
     player.friend = "O";
 
     switchActive(oBtn, xBtn);
@@ -32,7 +32,6 @@ xBtn.addEventListener("click", function(){
 
 friendBtn.addEventListener("click", function(){
     OPPONENT = "friend";
-    switchActive(computerBtn, friendBtn);
 });
 
 playBtn.addEventListener("click", function(){
@@ -50,4 +49,11 @@ playBtn.addEventListener("click", function(){
 function switchActive(off, on){
     off.classList.remove("active");
     on.classList.add("active");
+}
+
+function storeScore(){
+    localStorage.setItem("xscr", 0) 
+    localStorage.setItem("oscr", 0) 
+    console.log(localStorage.getItem('xscr'))
+    console.log(localStorage.getItem('oscr'))
 }

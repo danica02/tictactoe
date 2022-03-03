@@ -44,8 +44,7 @@
 .x{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
-    background-color: #ff615f;
-    color: #FFF;
+    background-color: #b9bbbc;
     font-size: 1.5em;
     border-radius: 5px;
     margin-left: 80px;
@@ -58,8 +57,7 @@
 .o{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 5px;
-    background-color: #3ec5f3;
-    color: #FFF;
+    background-color: #b9bbbc;
     font-size: 1.5em;
     border-radius: 5px;
     margin-left: 10px;
@@ -99,7 +97,7 @@
 }
 
 .active{
-    background-color: #fff !important;
+    background-color: #787878 !important;
     color: #000 !important;
 }
 
@@ -125,7 +123,9 @@
 
 .gameover .winner-img{
     display: block;
-    margin: 20px auto;
+    margin: 10px auto;
+    height: 80px;
+    width: 80px;
 }
 
 .gameover .play{
@@ -145,4 +145,22 @@
 }
 .gameover .play:hover{
     width: 150px;
+}
+
+.img_button {
+    width: 70px;
+    height: 70px;
+}
+
+.playerScore{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    color: aliceblue;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.playerScore span{
+    color: #ff615f;
 }

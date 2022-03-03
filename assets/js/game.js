@@ -22,6 +22,13 @@ function init(player, OPPONENT){
     const oImage = new Image();
     oImage.src = "assets/images/O.png";
 
+    var showLocalX = localStorage.getItem('xscr')
+    var showLocalO = localStorage.getItem('oscr')
+
+    var xscore = parseInt(showLocalX);
+    var oscore = parseInt(showLocalO);
+     
+
     // Win combinations
     const COMBOS = [
         [0, 1, 2],
@@ -85,9 +92,25 @@ function init(player, OPPONENT){
         // Check if the play wins
         if(isWinner(gameData, currentPlayer)){
             showGameOver(currentPlayer);
+            if(currentPlayer == "X"){
+                let localXint = parseInt(showLocalX)
+                localXint += 1
+                xscore += 1
+                localStorage.setItem("xscr", localXint)
+                displayScore()
+            }else if (currentPlayer == "O"){
+                let localOint = parseInt(showLocalO)
+                localOint += 1
+                oscore += 1
+                localStorage.setItem("oscr", localOint)
+                displayScore()
+            }
+            console.log(showLocalO)
+            console.log(showLocalX)
             GAME_OVER = true;
             return;
         }
+        
 
         // check if it's a tie game
         if(isTie(gameData)){
@@ -98,7 +121,7 @@ function init(player, OPPONENT){
             // GIVE TURN TO THE OTHER PLAYER
             currentPlayer = currentPlayer == player.man ? player.friend : player.man;
         }
-
+        
     });
 
     // GET EMPTY SPACES
@@ -136,6 +159,7 @@ function init(player, OPPONENT){
             }
         }
         return false;
+
     }
 
     // Check for a tie game
@@ -155,10 +179,16 @@ function init(player, OPPONENT){
         let message = player == "tie" ? "Oops No Winner" : "The Winner is";
         let imgSrc = `assets/images/${player}.png`;
 
+
         gameOverElement.innerHTML = `
-            <h1>${message}</1>
+            <h1>${message}</h1>
             <img class="winner-img" src=${imgSrc} </img>
-            <div class="play" onclick="location.reload()">Play Again!</div>
+            <div class="playerScore hide" id="displayScore">
+                <p id="xScore">X score: <span data-x-score></span></p>
+                <p id="oScore">O score: <span data-o-score></span></p>
+            </div>
+            <div class="play" onclick="location.reload()">Play Again</div>
+            <br>
         `;
 
         gameOverElement.classList.remove("hide");
@@ -171,4 +201,15 @@ function init(player, OPPONENT){
         // the x,y positon of the image are the x,y of the clicked space
         ctx.drawImage(img, j * SPACE_SIZE, i * SPACE_SIZE);
     }
+
+    function displayScore(){
+        document.querySelector('[data-x-score]').textContent = xscore
+        document.querySelector('[data-o-score]').textContent = oscore
+        
+    }
+
+    // function removeLocalStrg(){
+    //     localStorage.setItem("xscr", 0) 
+    //     localStorage.setItem("oscr", 0) 
+    // }
 }
