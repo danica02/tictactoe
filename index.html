@@ -8,6 +8,16 @@
     <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body style="background-image: url('assets/images/bg.jpg');">
+    <div class="topnav">
+        <a class="nav-link" onclick="openToDos()">Game History</a>
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
+                <button type="button" class="btn cancel" onclick="closeForm()">x</button>
+                <div class="displayHistory" id="displayHistory"></div>
+            </form>
+        </div>
+    </div>
+
     <div class="container">
         <canvas id="cvs" width="500" height="500"></canvas>
         <div class="options">
@@ -29,9 +39,7 @@
         <p id="next">next >></p>
     </div>
 
-    <div class="displayHistory" id="displayHistory">
 
-    </div>
 </body>
 
 <script src="assets/js/main.js"></script>

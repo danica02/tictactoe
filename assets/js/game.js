@@ -84,7 +84,7 @@ function init(player, OPPONENT){
         // displayHistory
         var historyContainer = document.getElementById("displayHistory")
         var pTag = document.createElement('p')
-        var moveContent = document.createTextNode(` Tile ${id + 1} `)
+        var moveContent = document.createTextNode(` Tile ${id + 1} was selected`)
         pTag.appendChild(moveContent)
         historyContainer.appendChild(pTag)
         console.log(moveContent)

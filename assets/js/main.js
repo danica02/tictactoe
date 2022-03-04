@@ -58,3 +58,12 @@ function storeScore(){
     console.log(localStorage.getItem('xscr'))
     console.log(localStorage.getItem('oscr'))
 }
+
+function openToDos() {
+    document.getElementById("myForm").style.display = "block";
+    document.getElementById("myQoutes").style.display = "none"
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+}
