@@ -133,7 +133,7 @@
     font-size: 30px;
     width: 150px;
     display: block;
-    margin: 50px auto;
+    margin: 50px 15px;
     border-radius: 5px;
     border: 1px solid #fff;
     text-align: center;
@@ -159,8 +159,40 @@
     color: aliceblue;
     margin-top: 10px;
     font-size: 20px;
+    font-family: 'Fascinate Inline', cursive;
 }
 
 .playerScore span{
     color: #ff615f;
+    font-weight: bold;
+}
+
+.history{
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    color: aliceblue;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Fascinate Inline', cursive;
+    display: none;
+}
+
+.history span{
+    color: #ff615f;
+}
+
+.playContainer{
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Fascinate Inline', cursive;
+}
+
+.historyyy{
+
+    color: aliceblue;
+
 }

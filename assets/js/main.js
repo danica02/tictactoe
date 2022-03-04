@@ -6,7 +6,7 @@ const friendBtn = document.querySelector(".container");
 const xBtn = document.querySelector(".x");
 const oBtn = document.querySelector(".o");
 const playBtn = document.querySelector(".play");
-const playAgn = document.getElementById("playAgnBTN")
+const prevNext = document.querySelector(".history")
 
 
 // GAME OVER ELEMENT
@@ -44,6 +44,7 @@ playBtn.addEventListener("click", function(){
     
     init(player, OPPONENT);
     options.classList.add("hide");
+    prevNext.style.display = "flex";
 });
 
 function switchActive(off, on){

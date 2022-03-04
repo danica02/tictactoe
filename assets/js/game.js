@@ -79,6 +79,15 @@ function init(player, OPPONENT){
 
         // Get the id of the space the player clicked on
         let id = board[i][j];
+        console.log(id)
+
+        // displayHistory
+        var historyContainer = document.getElementById("displayHistory")
+        var pTag = document.createElement('p')
+        var moveContent = document.createTextNode(` Tile ${id + 1} `)
+        pTag.appendChild(moveContent)
+        historyContainer.appendChild(pTag)
+        console.log(moveContent)
 
         // Prevent the player to play the same space twice
         if(gameData[id]) return;
@@ -183,15 +192,18 @@ function init(player, OPPONENT){
         gameOverElement.innerHTML = `
             <h1>${message}</h1>
             <img class="winner-img" src=${imgSrc} </img>
-            <div class="playerScore hide" id="displayScore">
+            <div class="playerScore" id="displayScore">
                 <p id="xScore">X score: <span data-x-score></span></p>
                 <p id="oScore">O score: <span data-o-score></span></p>
             </div>
-            <div class="play" onclick="location.reload()">Play Again</div>
-            <br>
+            <div class="playContainer">
+                <div class="play" onclick="location.reload()">Rematch</div>
+                <div class="play" onclick="location.reload()">Play Again</div>
+            </div>
         `;
 
         gameOverElement.classList.remove("hide");
+        prevNext.style.display = "none";
     }
 
     // draw on board
@@ -208,8 +220,12 @@ function init(player, OPPONENT){
         
     }
 
-    // function removeLocalStrg(){
-    //     localStorage.setItem("xscr", 0) 
-    //     localStorage.setItem("oscr", 0) 
+    // function removeImg(player, i, j){
+    //     let img = player == "X" ? xImage : oImage;
+    //     ctx.clearRect(0, 0, j * SPACE_SIZE, i * SPACE_SIZE);
     // }
+
+    // var removeBtn = document.getElementById("removeLast");
+
+    // removeBtn.addEventListener("click", removeImg);
 }
