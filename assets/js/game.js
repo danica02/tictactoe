@@ -142,6 +142,7 @@ function init(player, OPPONENT){
         
     });
 
+    // back to the previous step when click previous button
     function prevCoordinates(){
         var removeMove = nextHistory.pop()
         var popPrev = previous.pop()
@@ -169,6 +170,17 @@ function init(player, OPPONENT){
         nextHistoryStorage.push(removeMove)
     }
 
+    function removeImg(){  
+        prevCoordinates()
+        ctx.clearRect(coord[0], coord[1], coord[2], coord[3]);
+    }
+
+    var removeBtn = document.getElementById("prev");
+
+    removeBtn.addEventListener("click", removeImg);
+    
+
+    // Next button
     function nextCoordinates(){
         var indexFinder = nextHistoryStorage.length - 1
         var image = nextHistoryStorage[indexFinder][0]
@@ -249,7 +261,6 @@ function init(player, OPPONENT){
                 <p id="oScore">O score: <span data-o-score></span></p>
             </div>
             <div class="playContainer">
-                <div class="play" onclick="location.reload()">Rematch</div>
                 <div class="play" onclick="location.reload()">Play Again</div>
             </div>
         `;
@@ -271,14 +282,5 @@ function init(player, OPPONENT){
         document.querySelector('[data-o-score]').textContent = oscore
         
     }
-
-    function removeImg(){  
-        prevCoordinates()
-        ctx.clearRect(coord[0], coord[1], coord[2], coord[3]);
-    }
-
-    var removeBtn = document.getElementById("prev");
-
-    removeBtn.addEventListener("click", removeImg);
 
 }
