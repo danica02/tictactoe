@@ -7,7 +7,7 @@ function init(player, OPPONENT){
     let board = [];
     const COLUMN = 3;
     const ROW = 3;
-    const SPACE_SIZE = 166.6666666666667;
+    const SPACE_SIZE = 166.67;
 
     // STORE PLAYER'S MOVES
     let gameData = new Array(9);
@@ -28,6 +28,12 @@ function init(player, OPPONENT){
     var xscore = parseInt(showLocalX);
     var oscore = parseInt(showLocalO);
      
+    var coord 
+    var previous = []
+    var nextBtn = []
+
+    var nextHistory = []
+    var nextHistoryStorage = []
 
     // Win combinations
     const COMBOS = [
@@ -79,15 +85,17 @@ function init(player, OPPONENT){
 
         // Get the id of the space the player clicked on
         let id = board[i][j];
-        console.log(id)
 
         // displayHistory
         var historyContainer = document.getElementById("displayHistory")
         var pTag = document.createElement('p')
-        var moveContent = document.createTextNode(` Tile ${id + 1} was selected`)
+        var moveContent = document.createTextNode(`Tile ${id + 1} was selected`)
         pTag.appendChild(moveContent)
         historyContainer.appendChild(pTag)
-        console.log(moveContent)
+        
+        //push player 
+        previous.push(id);
+        // console.log(previous);
 
         // Prevent the player to play the same space twice
         if(gameData[id]) return;
@@ -97,6 +105,9 @@ function init(player, OPPONENT){
         
         // draw the move on board
         drawOnBoard(currentPlayer, i, j);
+
+        nextHistory.push([currentPlayer, i, j])
+        // console.log(nextHistory)
 
         // Check if the play wins
         if(isWinner(gameData, currentPlayer)){
@@ -114,8 +125,6 @@ function init(player, OPPONENT){
                 localStorage.setItem("oscr", localOint)
                 displayScore()
             }
-            console.log(showLocalO)
-            console.log(showLocalX)
             GAME_OVER = true;
             return;
         }
@@ -132,6 +141,49 @@ function init(player, OPPONENT){
         }
         
     });
+
+    function prevCoordinates(){
+        var removeMove = nextHistory.pop()
+        var popPrev = previous.pop()
+        nextBtn.push(popPrev)
+        if (popPrev == 0){
+            coord = [1, 1, 160, 160]
+        } else if (popPrev == 1){
+            coord = [168, 1, 160, 160]
+        } else if (popPrev == 2){
+            coord = [335, 1, 160, 160]
+        } else if (popPrev == 3){
+            coord = [1, 168, 160, 160]
+        } else if (popPrev == 4){
+            coord = [168, 168, 160, 160]
+        } else if (popPrev == 5){
+            coord = [335, 168, 160, 160]
+        } else if (popPrev == 6){
+            coord = [1, 335, 160, 160]
+        } else if (popPrev == 7){
+            coord = [168, 335, 160, 160]
+        } else if (popPrev == 8){
+            coord = [335, 335, 160, 160]
+        }
+
+        nextHistoryStorage.push(removeMove)
+    }
+
+    function nextCoordinates(){
+        var indexFinder = nextHistoryStorage.length - 1
+        var image = nextHistoryStorage[indexFinder][0]
+        var coor1 = nextHistoryStorage[indexFinder][1]
+        var coor2 = nextHistoryStorage[indexFinder][2]
+        drawOnBoard(image, coor1, coor2)
+        console.log(nextHistoryStorage)
+
+        var returnHistory = nextHistoryStorage.pop()
+        nextHistory.push(returnHistory)
+    }
+
+
+    var nxtButton = document.getElementById("next");
+    nxtButton.addEventListener("click", nextCoordinates);
 
     // GET EMPTY SPACES
     function getEmptySpaces(gameData){
@@ -220,12 +272,13 @@ function init(player, OPPONENT){
         
     }
 
-    // function removeImg(player, i, j){
-    //     let img = player == "X" ? xImage : oImage;
-    //     ctx.clearRect(0, 0, j * SPACE_SIZE, i * SPACE_SIZE);
-    // }
+    function removeImg(){  
+        prevCoordinates()
+        ctx.clearRect(coord[0], coord[1], coord[2], coord[3]);
+    }
 
-    // var removeBtn = document.getElementById("removeLast");
+    var removeBtn = document.getElementById("prev");
 
-    // removeBtn.addEventListener("click", removeImg);
+    removeBtn.addEventListener("click", removeImg);
+
 }

@@ -194,7 +194,7 @@
 .displayHistory{
     margin-top: 30px;
     color: #000;
-    font-size: 15px;
+    font-size: 11px;
 }
 
 
@@ -202,30 +202,20 @@
 .topnav {
     background-color: transparent;
     overflow: hidden;
-}
-
-.nav-link {
-    text-decoration: none;
-    font-size: 14px;
-    display: block;
-    height: 60px;
-    line-height: 60px;
-    cursor: pointer;
-    text-transform: uppercase;
-    color: #FFF;
-    padding-left: 20px;
-    width: 120px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: grid;
+    justify-content: end;
 }
 
 .form-popup {
     display: none;
     position: fixed;
-    left: 25px;
+    right: 25px;
+    bottom: 100px;
 }
 
 .form-container {
-    max-width: 300px;
+    width: 150px;
+    height: 270px;
     padding: 10px;
     background-color: #FFF;
     font-size: 11px;
@@ -234,7 +224,24 @@
 }
 
 .form-container .cancel {
-    float: right;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
     border: none;
     background-color: #ffe6e6;
+    opacity: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-size: 14px;
+    display: none;
+    height: 60px;
+    line-height: 60px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: #FFF;
+    padding-top: 5rem;
+    width: 120px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

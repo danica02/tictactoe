@@ -8,16 +8,6 @@
     <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body style="background-image: url('assets/images/bg.jpg');">
-    <div class="topnav">
-        <a class="nav-link" onclick="openToDos()">Game History</a>
-        <div class="form-popup" id="myForm">
-            <form class="form-container">
-                <button type="button" class="btn cancel" onclick="closeForm()">x</button>
-                <div class="displayHistory" id="displayHistory"></div>
-            </form>
-        </div>
-    </div>
-
     <div class="container">
         <canvas id="cvs" width="500" height="500"></canvas>
         <div class="options">
@@ -27,7 +17,7 @@
                 <div class="x"><img src="assets/images/X.png" alt="x_icon" class="img_button"></div>
                 <div class="o"><img src="assets/images/O.png" alt="o_icon" class="img_button"></div>        
 
-            <div class="play">PLAY</div>
+            <div class="play" onclick="openNavlinky()">PLAY</div>
         </div>
         
         <div class="gameover hide"></div>
@@ -35,10 +25,18 @@
 
     <div class="history" id="gameHistory">
         <p id="prev"><< previous</p>
-        <!-- <button type="button" id="removeLast">Remove</button> -->
         <p id="next">next >></p>
     </div>
 
+    <div class="topnav">
+        <a id="history" class="nav-link" onclick="openHistory()">Game History</a>
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
+                <div class="cancel" onclick="closeForm()">GAME HISTORY</div>
+                <div class="displayHistory" id="displayHistory"></div>
+            </form>
+        </div>
+    </div>
 
 </body>
 

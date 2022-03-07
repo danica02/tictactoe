@@ -59,9 +59,12 @@ function storeScore(){
     console.log(localStorage.getItem('oscr'))
 }
 
-function openToDos() {
+function openHistory() {
     document.getElementById("myForm").style.display = "block";
-    document.getElementById("myQoutes").style.display = "none"
+}
+
+function openNavlinky() {
+    document.getElementById("history").style.display = "block";
 }
 
 function closeForm() {
