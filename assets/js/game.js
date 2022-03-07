@@ -86,6 +86,8 @@ function init(player, OPPONENT){
         // Get the id of the space the player clicked on
         let id = board[i][j];
 
+        console.log(id);
+
         // displayHistory
         var historyContainer = document.getElementById("displayHistory")
         var pTag = document.createElement('p')
